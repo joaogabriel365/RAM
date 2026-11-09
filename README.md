@@ -327,3 +327,7 @@ A documentação interativa fica em **http://localhost:8000/docs**.
 
 `frontend/public/logo-ram.svg` é um **logo provisório**. Substitua pelo SVG oficial com o
 mesmo nome; o brilho neon roxo é aplicado por CSS (classe `.logo-glow`).
+
+## Licença
+
+MIT — veja [LICENSE](LICENSE).

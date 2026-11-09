@@ -1,8 +1,26 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 backend/.venv/
 backend/.env
 backend/data/
+
+# Node / frontend
 frontend/node_modules/
 frontend/dist/
+npm-debug.log*
+yarn-error.log*
+
+# Editores e sistema operacional
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
+
+# Variáveis de ambiente locais (nunca versionar senhas)
+.env
+.env.local
