@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="320" height="130">
+  <!-- LOGO PROVISÓRIO: substitua este arquivo pelo logo-ram.svg oficial (fonte estilo Magneto). -->
+  <text x="160" y="96" text-anchor="middle"
+        font-family="Magneto, 'Brush Script MT', 'Segoe Script', cursive"
+        font-size="92" font-weight="700" font-style="italic"
+        fill="#F3E8FF" stroke="#D58CFF" stroke-width="1.5">RAM</text>
+</svg>

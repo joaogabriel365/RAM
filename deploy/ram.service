@@ -1,0 +1,20 @@
+# Serviço systemd do backend do RAM (Linux: Raspberry Pi OS ou mini PC).
+# Instale com:
+#   sudo cp deploy/ram.service /etc/systemd/system/ram.service
+#   (ajuste User e os caminhos abaixo)
+#   sudo systemctl daemon-reload && sudo systemctl enable --now ram
+
+[Unit]
+Description=RAM - backend do robô do Maker Paulista
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ram
+WorkingDirectory=/home/ram/ram-robo/backend
+ExecStart=/home/ram/ram-robo/backend/.venv/bin/python -m ram
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* ---------- Tokens da identidade visual do RAM ---------- */
+@theme {
+  --color-bg: #07060b;
+  --color-surface: #12101a;
+  --color-surface-2: #1a1726;
+  --color-line: #2a2140;
+  --color-neon: #b026ff;
+  --color-neon-soft: #d58cff;
+  --color-accent: #22d3ee;
+  --color-ink: #ede9f6;
+  --color-ink-soft: #9a91b0;
+  --color-alert: #ff3d71;
+  --color-ok: #3ddc97;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 12px;
+
+  --shadow-neon: 0 0 0 1px rgb(176 38 255 / 0.55), 0 0 22px rgb(176 38 255 / 0.35);
+  --shadow-neon-strong: 0 0 0 1px rgb(213 140 255 / 0.8), 0 0 30px rgb(176 38 255 / 0.55);
+  --shadow-accent: 0 0 0 1px rgb(34 211 238 / 0.6), 0 0 20px rgb(34 211 238 / 0.35);
+  --shadow-alert: 0 0 0 1px rgb(255 61 113 / 0.7), 0 0 24px rgb(255 61 113 / 0.45);
+}
+
+:root {
+  color-scheme: dark;
+  --grid-major: rgb(42 33 64 / 0.32);
+  --grid-minor: rgb(42 33 64 / 0.14);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  /* papel milimetrado sutil */
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: rgb(176 38 255 / 0.45);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 4px rgb(176 38 255 / 0.9)) drop-shadow(0 0 16px rgb(176 38 255 / 0.55));
+}
+
+.text-glow {
+  text-shadow: 0 0 12px rgb(176 38 255 / 0.7);
+}
+
+/* ---------- Slider ---------- */
+input[type="range"].ram-range {
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+  --fill: 50%;
+}
+input[type="range"].ram-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-neon) var(--fill), var(--color-line) var(--fill));
+}
+input[type="range"].ram-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-neon) var(--fill), var(--color-line) var(--fill));
+}
+input[type="range"].ram-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  border: 3px solid var(--color-neon);
+  box-shadow: 0 0 10px rgb(176 38 255 / 0.7);
+}
+input[type="range"].ram-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  border: 3px solid var(--color-neon);
+  box-shadow: 0 0 10px rgb(176 38 255 / 0.7);
+}
+
+/* ---------- Efeito glitch do rosto ---------- */
+@keyframes ram-glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-6px, 2px) skewX(-4deg); }
+  40% { transform: translate(5px, -2px); }
+  60% { transform: translate(-3px, 1px) skewX(3deg); }
+  80% { transform: translate(4px, 0); }
+  100% { transform: translate(0); }
+}
+.ram-glitching {
+  animation: ram-glitch 220ms steps(2, end);
+  filter: drop-shadow(4px 0 0 rgb(34 211 238 / 0.75)) drop-shadow(-4px 0 0 rgb(255 61 113 / 0.75));
+}
+
+/* Fundos animados do rosto */
+@keyframes ram-twinkle {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.35; transform: translateY(-0.6%); }
+}
+.ram-twinkle {
+  animation: ram-twinkle 5s ease-in-out infinite;
+}
+.ram-twinkle-late {
+  animation-duration: 7s;
+  animation-delay: -3s;
+}
+@keyframes ram-aurora {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(12%, 6%) scale(1.15); }
+  66% { transform: translate(-8%, 10%) scale(0.92); }
+}
+.ram-aurora-a { animation: ram-aurora 16s ease-in-out infinite; }
+.ram-aurora-b { animation: ram-aurora 21s ease-in-out infinite reverse; }
+.ram-aurora-c { animation: ram-aurora 26s ease-in-out infinite; animation-delay: -8s; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Cursor piscando do balão de fala */
+@keyframes ram-caret {
+  50% { opacity: 0; }
+}
+.ram-caret {
+  animation: ram-caret 0.9s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
